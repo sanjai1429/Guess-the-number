@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>guess game</title>
+</head>
+<body style="background-color: #FFE5E5; text-align: center; font-family: 'Comic Sans MS', cursive;">
+    <h1 style="color: #FF69B4; text-shadow: 2px 2px 4px #000;">🎮 GUESS THE NUMBER FROM 1 TO 100🎮</h1>
+    <br><br>
+    <input type="number" id="check" style="padding: 10px; font-size: 18px; border-radius: 10px; border: 3px solid #FF69B4;">
+    <button onclick="check()" style="padding: 10px 20px; font-size: 18px; background-color: #FF69B4; color: white; border: none; border-radius: 10px; cursor: pointer;">CHECK</button>
+    <p id="result" style="font-size: 24px; color: #FF69B4;">Let's play! 🎲</p>
+    <p id="score" style="font-size: 20px; color: #4B0082;">score: 10</p>
+    
+    
+    <script>
+        var num = document.getElementById("check")
+        var result = document.getElementById("result")
+        var random = Math.floor(Math.random()*100)+1
+        var score = document.getElementById("score")
+        var tscore = 100
+
+        function check()
+        {
+            var entered = num.value
+            if(entered == random){
+                console.log("right")
+                result.innerHTML = "🎉 YOU'RE RIGHT! 🎉"
+                alert("🏆 Congratulations! You Won! 🎈")
+            }
+            else{
+                console.log("wrong")
+                tscore=tscore-1
+                result.innerHTML = "❌ Try Again! ❌"
+                score.textContent="score: "+tscore
+                if(entered > random) {
+                    result.innerHTML += "<br>Hint: Try a lower number! ⬇️"
+                } else {
+                    result.innerHTML += "<br>Hint: Try a higher number! ⬆️"
+                }
+            }
+        }
+    </script>
+</body>
+</html>
